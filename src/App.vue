@@ -2,17 +2,17 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
   
-    <Class />
+    <Child />
   </div>
   
 </template>
 
 <script>
- import Class from './components/Style.vue';
+import Child from './components/Child.vue'
 export default {
   name: 'App',
   components: {
-    Class
+    Child
      
       
   }
