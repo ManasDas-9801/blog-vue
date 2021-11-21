@@ -1,18 +1,18 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-  
-    <Child />
+   <EmployeeList />
   </div>
   
 </template>
 
 <script>
-import Child from './components/Child.vue'
+import EmployeeList from './components/EmployeeList.vue';
+
 export default {
   name: 'App',
   components: {
-    Child
+    EmployeeList
      
       
   }
