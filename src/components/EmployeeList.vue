@@ -1,19 +1,23 @@
 <template>
    <div>
         <h2>This is Employee List </h2>
+         <input type="text" v-model="name">
           <table border="2px">
           <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Email</th>
+            <th>User Possibility</th>
           </tr>
           <tr v-for="user in users" :key="user.id">
-                  <td>{{user.id}}</td>
-                  <td>{{user.e_firstname}}</td>
-                  <td>{{user.e_lastname}}</td>
+                  <td>{{user.country_id}}</td>
+                  <td class="text-danger">{{name}}</td>
+                  <td>{{user.probability}}</td>
                   <td>{{user.e_email}}</td>
           </tr>
+
         </table>
+
+        <button v-on:click="get()">GEt</button>
    </div>
     
 </template>
@@ -26,13 +30,17 @@ Vue.use(VueAxios,axios);
 export default {
     name:"EmployeeList",
     data(){
-         return {users:undefined} 
+         return {users:undefined,name:''} 
     },
-    mounted(){
-          Vue.axios.get('http://127.0.0.1:8000/api/check').then((res)=>{
-              this.users = res.data.data;
-               console.log(res.data.data)
+    methods:{
+         get()
+         {
+               Vue.axios.get('https://api.nationalize.io/?name=' + this.name).then((res)=>{
+              this.users = res.data.country;
+              
+               console.log(res);
           });
+         }
     }
 }
 </script>
